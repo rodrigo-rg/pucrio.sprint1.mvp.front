@@ -1,0 +1,181 @@
+/* Sugestão para styles.css */
+body {
+    background: #f5f6fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: 220px; /* ajuste conforme necessário */
+    background: url('img/academia.jpg') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.5); /* branco translúcido para marca d'água */
+    /* Você pode ajustar a cor e opacidade conforme desejar */
+    z-index: 1;
+}
+
+header .title {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    background: rgba(0,0,0,0.55); /* fundo escuro translúcido */
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+header .title h1 {
+    color: #fff;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 8px #000, 0 0 4px #222;
+    letter-spacing: 2px;
+}
+
+header .title h2 {
+    color: #e0e0e0;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-shadow: 1px 1px 6px #000;
+    margin: 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+}
+
+.title h2 {
+    margin: 5px 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #c9ada7;
+}
+
+.banner img {
+    border-radius: 10px;
+    max-width: 250px;
+    height: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    max-width: 900px;
+    margin: 30px auto 0 auto;
+    padding: 24px 32px;
+}
+
+.newItem h3, .items h3 {
+    margin-top: 0;
+    color: #22223b;
+    font-weight: 600;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #c9ada7;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f8f9fa;
+}
+
+.addBtn {
+    background: #4a4e69;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(74,78,105,0.08);
+    transition: background 0.2s;
+    align-self:flex-end; margin-left:8px;
+}
+
+.addBtn:hover {
+    background: #9a8c98;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.loadBtn, .delBtn {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: #fff;
+}
+
+th, td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f2e9e4;
+    color: #22223b;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+tr:hover {
+    background: #e0e1dd;
+}
+
+@media (max-width: 700px) {
+    .header-content, .card {
+        flex-direction: column;
+        padding: 16px;
+    }
+    .banner img {
+        max-width: 100%;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

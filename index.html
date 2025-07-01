@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>MVP</title>
+</head>
+
+<body>
+     <!-- Cabeçalho de informações do sistema -->
+    <header>
+        <div class="title">
+            <h1>Musculação</h1>
+            <h2>App para registro da evolução nos treinos de musculação</h2>
+        </div>
+    </header>
+
+    <!-- Opções para adicionar uma nova anotação -->
+    <section class="newItem card">
+        <div class="form-row">
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <h3>Nova Anotação</h3>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <button onclick="novaAnotacao()" class="addBtn">Adicionar</button>
+            </div>
+        </div>
+        <div class="form-row">
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newExercicioNome">Nome do Exercício</label>
+                <input type="text" id="newExercicioNome">
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newDataExecucao">Data</label>
+                <input type="text" id="newDataExecucao">
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newComentario">Comentário</label>
+                <input type="text" id="newComentario">
+            </div>
+        </div>
+        <div class="form-row">
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newSerie">Série</label>
+                <input type="text" id="newSerie">
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newRepeticoes">Repetições</label>
+                <input type="text" id="newRepeticoes">
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column;">
+                <label for="newCarga">Carga (kg)</label>
+                <input type="text" id="newCarga">
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabela com anotações existentes -->
+    <section class="items">
+        <table id="myTable">
+            <tr>
+                <th>Exercicio Nome</th>
+                <th>Data</th>
+                <th>Serie</th>
+                <th>Repetições</th>
+                <th>Carga</th>
+                <th>Comentário</th>
+                <th class="loadBtn"><img src="img/load.png" width="15px" height="15px"></th>
+                <th class="delBtn"><img src="img/del.png" width="15px" height="15px"></th>
+            </tr>
+        </table>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+
+
