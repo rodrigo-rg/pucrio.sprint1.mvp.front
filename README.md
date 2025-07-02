@@ -1,11 +1,15 @@
 # Frontend do MVP Musculação_App
 
-Este é o frontend do MVP do aplicativo Musculação_App, desenvolvido para auxiliar no acompanhamento de treinos de musculação. O projeto foi criado utilizando HTML, CSS e JavaScript.
+Este é o frontend do MVP do aplicativo Musculação_App, desenvolvido para auxiliar no acompanhamento de treinos de musculação.
+
+O projeto foi criado utilizando HTML, CSS e JavaScript.
 
 ## Funcionalidades
 
-- Cadastro e visualização de treinos
-- Registro de exercícios realizados
+- Visualização, inclusão e exclusão de anotações de exercícios realizados.
+- Em cada anotação registrada, é possível adicionar o nome do exercício, a data em que foi realizado, o número da série, a quantidade de repetições e o peso utilizado. Além de incluir um comentário opcional.
+- O usuário pode reutilizar uma anotação já registrada para facilitar o registro de novas anotações.
+
 
 ## Estrutura do Projeto
 

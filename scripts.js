@@ -52,7 +52,9 @@ const getAnotacao = async (id) => {
   .then((data) => {
     const a = data;
     document.getElementById("newExercicioNome").value = a.exercicio_nome;
-    document.getElementById("newDataExecucao").value = a.data_execucao;
+    // Converte a data de aaaa-mm-dd para dd/mm/aaaa antes de exibir no input
+    const [dia, mes, ano] = a.data_execucao.split('/');
+    document.getElementById("newDataExecucao").value = `${ano}-${mes}-${dia}`;
     document.getElementById("newSerie").value = a.serie;
     document.getElementById("newRepeticoes").value = a.repeticoes;
     document.getElementById("newCarga").value = a.carga;
@@ -87,7 +89,8 @@ const postAnotacao = async (inputExercicioNome, inputDataExecucao, inputSerie, i
     if (!response.ok) {
         throw new Error('Erro ao adicionar anotação. Verifique os dados e tente novamente.');
     }
-    return response.anotacao_id;
+    const data = await response.json();
+    return data.anotacao_id;
 
 }
 
@@ -99,7 +102,9 @@ const postAnotacao = async (inputExercicioNome, inputDataExecucao, inputSerie, i
 */
 const novaAnotacao = () => {
   let inputExercicioNome = document.getElementById("newExercicioNome").value;
-  let inputDataExecucao = document.getElementById("newDataExecucao").value;
+    // Converte de aaaa-mm-dd para dd/mm/aaaa, que é o formato aceito pela API.
+  let [ano, mes, dia] = document.getElementById("newDataExecucao").value.split("-");
+  let inputDataExecucao = `${dia}/${mes}/${ano}`;
   let inputSerie = document.getElementById("newSerie").value;
   let inputRepeticoes = document.getElementById("newRepeticoes").value;
   let inputCarga = document.getElementById("newCarga").value;
@@ -137,18 +142,20 @@ const insertList = (anotacao_id,exercicio_nome,data_execucao,serie,repeticoes,ca
     cel.textContent = item[i];
   }
   // Adiciona na última coluna o botão de carregar a anotação.
-  insertButton(row.insertCell(-1), anotacao_id, "load");
+  insertButton(row.insertCell(-1), "load");
   // Adiciona na última coluna o botão de excluir a anotação.
-  insertButton(row.insertCell(-1), anotacao_id, "del")
+  insertButton(row.insertCell(-1), "del")
+
+  row.setAttribute('anotacao_id', anotacao_id);
 }
 
 
 /*
   --------------------------------------------------------------------------------------
-  Função para criar o botão close em um item da lista.
+  Função para criar o botão load e del em um item da lista.
   --------------------------------------------------------------------------------------
 */
-const insertButton = (parent, anotacao_id, operacao) => {
+const insertButton = (parent, operacao) => {
   let span = document.createElement("span");
   let txt;
   if (operacao === "load") {
@@ -161,18 +168,18 @@ const insertButton = (parent, anotacao_id, operacao) => {
     span.onclick = handleDelClick;
   }
   span.appendChild(txt);
-  span.setAttribute('anotacao_id', anotacao_id);
   parent.appendChild(span);
 }
 
 function handleLoadClick(event) {
-  const anotacao_id = this.getAttribute('anotacao_id');
+  let div = event.target.parentElement.parentElement;
+  const anotacao_id = div.getAttribute('anotacao_id');
   getAnotacao(anotacao_id);
 }
 
 function handleDelClick(event) {
   let div = event.target.parentElement.parentElement;
-  const anotacao_id = this.getAttribute('anotacao_id');
+  const anotacao_id = div.getAttribute('anotacao_id');
   if (confirm("Você tem certeza?")) {
     div.remove()
     deleteItem(anotacao_id)

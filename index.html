@@ -14,7 +14,7 @@
      <!-- Cabeçalho de informações do sistema -->
     <header>
         <div class="title">
-            <h1>Musculação</h1>
+            <h1>MVP</h1>
             <h2>App para registro da evolução nos treinos de musculação</h2>
         </div>
     </header>
@@ -32,29 +32,29 @@
         <div class="form-row">
             <div style="flex:1; display:flex; flex-direction:column;">
                 <label for="newExercicioNome">Nome do Exercício</label>
-                <input type="text" id="newExercicioNome">
+                <input type="text" required maxlength="50" id="newExercicioNome">
             </div>
             <div style="flex:1; display:flex; flex-direction:column;">
-                <label for="newDataExecucao">Data</label>
-                <input type="text" id="newDataExecucao">
+                <label for="newDataExecucao">Data (dd/mm/aaaa)</label>
+                <input type="date" required id="newDataExecucao" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/aaaa">
             </div>
             <div style="flex:1; display:flex; flex-direction:column;">
                 <label for="newComentario">Comentário</label>
-                <input type="text" id="newComentario">
+                <input type="text" maxlength="100" id="newComentario">
             </div>
         </div>
         <div class="form-row">
             <div style="flex:1; display:flex; flex-direction:column;">
                 <label for="newSerie">Série</label>
-                <input type="text" id="newSerie">
+                <input type="number" min="1" max="5" required id="newSerie">
             </div>
             <div style="flex:1; display:flex; flex-direction:column;">
                 <label for="newRepeticoes">Repetições</label>
-                <input type="text" id="newRepeticoes">
+                <input type="number" min="1" max="20" required id="newRepeticoes">
             </div>
             <div style="flex:1; display:flex; flex-direction:column;">
                 <label for="newCarga">Carga (kg)</label>
-                <input type="text" id="newCarga">
+                <input type="number" min="0" max="300" required id="newCarga">
             </div>
         </div>
     </section>
@@ -79,5 +79,3 @@
 </body>
 
 </html>
-
-
